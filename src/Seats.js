@@ -1,12 +1,9 @@
 import React from 'react';
+import SetSeats from './setSeats';
 
 class Seats extends React.Component {
   renderSquare(i) {
-    return (
-      <button className='seat'>
-        {i}
-      </button>
-    );
+    return <SetSeats value={i} />;
   }
 
   render() {
