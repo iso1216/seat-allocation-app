@@ -4,7 +4,7 @@ class SetSeats extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      number: props.value,
+      number: null,
       disable: "seat",
     };
   }
@@ -12,12 +12,15 @@ class SetSeats extends React.Component {
   checkDisable = (dis) => {
     if(dis==="seat"){
       this.setState({
-        disable: "noneSeat",
+        disable: "noneseat",
       });
+      //numberOfSeatを何とかする
+      this.props.numberOfSeats--;
     } else {
       this.setState({
         disable: "seat",
       });
+      this.props.numberOfSeats++;
     }
   };
   

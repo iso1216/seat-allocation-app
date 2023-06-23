@@ -2,8 +2,19 @@ import React from 'react';
 import SetSeats from './setSeats';
 
 class Seats extends React.Component {
-  renderSquare(i) {
-    return <SetSeats value={i} />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      numberOfSeats: 55,
+    };
+  }
+  renderSeats(i) {
+    return (
+    <SetSeats
+      value={i}
+      number={this.state.numberOfSeats}
+      />
+    );
   }
 
   render() {
@@ -14,7 +25,7 @@ class Seats extends React.Component {
         {heigth.map((index) => (
           <div className="board-row">
             {widthNumber.map((number) => (
-              this.renderSquare(number+7*index)
+              this.renderSeats(number+7*index)
             ))}
           </div>
         ))}
