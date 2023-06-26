@@ -15,7 +15,6 @@ class SetSeats extends React.Component {
       this.setState({
         disable: "noneSeat",
       });
-      //numberOfSeatを何とかする
     } else {
       this.setState({
         disable: "seat",
