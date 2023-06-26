@@ -54,12 +54,3 @@ ol, ul {
 .kbd-navigation .seat:focus {
   background: #ddd;
 }
-
-.seats {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
-}
