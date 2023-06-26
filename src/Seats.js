@@ -84,10 +84,13 @@ class Seats extends React.Component {
     return (
       <div>
         {this.ViewController(widthNumber,heigth)}
-        <ChangeSeats
+        <div className="viewChange">
+          <ChangeSeats
           seats={this.state.seats}
           onClick={this.resultSeats}
           />
+          <button className='Button' onClick={() => {this.setState({viewChange:true})}}>再抽選</button>
+        </div>
       </div>
     );
   }

@@ -29,7 +29,9 @@ class ChangeSeats extends React.Component {
 
   render() {
     return (
-      <button onClick={() => {
+      <button
+        className="Button"
+        onClick={() => {
         this.generateRandomNumber();
         setTimeout(()=>{
           this.onChange(this.state.value);
