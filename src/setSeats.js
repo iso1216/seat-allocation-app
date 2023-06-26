@@ -10,20 +10,24 @@ class SetSeats extends React.Component {
   }
 
   checkDisable = (dis) => {
+    this.onChange();
     if(dis==="seat"){
       this.setState({
-        disable: "noneseat",
+        disable: "noneSeat",
       });
       //numberOfSeatを何とかする
-      this.props.numberOfSeats--;
     } else {
       this.setState({
         disable: "seat",
       });
-      this.props.numberOfSeats++;
     }
   };
-  
+
+  onChange = () =>{
+    const { value, onClick } = this.props;
+    onClick(value);
+  }
+
   render() {
     return (
       <button className={this.state.disable} onClick={() => {

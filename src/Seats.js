@@ -5,14 +5,24 @@ class Seats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfSeats: 55,
+      seats: Array(56).fill(null),
     };
+  }
+
+  handleClick = (i) => {
+    const seats = this.state.seats.slice();
+    if(seats[i]===0){
+      seats[i] = null;
+    } else {
+      seats[i] = 0;
+    }
+    this.setState({seats: seats});
   }
   renderSeats(i) {
     return (
     <SetSeats
       value={i}
-      number={this.state.numberOfSeats}
+      onClick={this.handleClick}
       />
     );
   }
