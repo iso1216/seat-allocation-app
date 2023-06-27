@@ -48,7 +48,7 @@ class Seats extends React.Component {
 
   ViewSeats(w,h){
     return(h.map((index) => (
-      <div className="board-row">
+      <div className="board-row" key={index}>
         {w.map((number) => (
           this.renderSeats(number+7*index)
         ))}
@@ -65,7 +65,7 @@ class Seats extends React.Component {
 
   ViewResult(w,h){
     return(h.map((index) => (
-      <div className="board-row">
+      <div className="board-row" key={index}>
         {w.map((number) => (
           this.renderResult(number+7*index)
         ))}
