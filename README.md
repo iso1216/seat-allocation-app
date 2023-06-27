@@ -4,7 +4,7 @@
 
 ## 利用方法
 
-[https://iso1216.github.io/seat-allocation-app/](https://iso1216.github.io/seat-allocation-app/)
+[https://iso1216.github.io/seat-allocation-app](https://iso1216.github.io/seat-allocation-app){:target="_blank"}
 <li>上記ページにアクセスしていただくと、縦8×横7マスの表と席替え・初期化のボタンが表示されます</li>
 <li>各マス一つ一つが座席となっており、それぞれクリックすると白からグレーに色がかわります</li>
 <li>色がグレーになっている座席が利用しないものとして扱われます</li>
