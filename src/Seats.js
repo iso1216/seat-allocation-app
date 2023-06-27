@@ -6,6 +6,7 @@ import Result from './result';
 const Seats = () => {
   const [seats, setSeats] = useState(Array(56).fill(null));
   const [viewChange, setViewChange] = useState(true);
+  const [viewLoading, setViewLoading] = useState(false);
 
   const handleClick = (i) => {
     const updatedSeats = [...seats];
@@ -29,7 +30,8 @@ const Seats = () => {
       indexSeats++;
     }
     setSeats(updatedSeats);
-    setViewChange(false)
+    setViewChange(false);
+    setViewLoading(true);
   };
 
   const renderSeats = (i) => {
@@ -56,28 +58,51 @@ const Seats = () => {
     ));
   };
 
+  const ViewLoading = () => {
+    setTimeout(() => {
+      setViewLoading(false);
+    }, 3000);
+    return (
+      <div className="box">
+        <div className="spinner type1">
+          <span>Loading...</span>
+        </div>
+      </div>
+    );
+  };
+
+  const ViewController = () => {
+    if (viewChange) {
+      return ViewSeats(widthNumber, height);
+    } else {
+      if (viewLoading) {
+        return ViewLoading();
+      } else {
+        return ViewResult(widthNumber, height);
+      }
+    }
+  };
+
   const widthNumber = [0, 1, 2, 3, 4, 5, 6];
   const height = [0, 1, 2, 3, 4, 5, 6, 7];
 
   return (
     <div>
-      {viewChange ? (
-        ViewSeats(widthNumber, height)
-      ) : (
-        ViewResult(widthNumber, height)
+      {ViewController()}
+      {!viewLoading && (
+        <div className="viewChange">
+          <ChangeSeats seats={seats} onClick={resultSeats} />
+          <button
+            className="Button"
+            onClick={() => {
+              setViewChange(true);
+              setSeats(Array(56).fill(null));
+            }}
+          >
+            初期化
+          </button>
+        </div>
       )}
-      <div className="viewChange">
-        <ChangeSeats seats={seats} onClick={resultSeats} />
-        <button
-          className="Button"
-          onClick={() => {
-            setViewChange(true);
-            setSeats(Array(56).fill(null));
-          }}
-        >
-          初期化
-        </button>
-      </div>
     </div>
   );
 };
