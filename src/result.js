@@ -13,7 +13,7 @@ class Result extends React.Component {
       <button
         className={this.state.number ? "seat" : "noneSeat"}
         onClick={()=>{this.setState({number:this.props.value})}}>
-          {this.state.number}
+          {this.state.number ? this.state.number : null}
       </button>
     );
   }
