@@ -35,7 +35,7 @@ class ChangeSeats extends React.Component {
         this.generateRandomNumber();
         setTimeout(()=>{
           this.onChange(this.state.value);
-          },1000)
+          },500)
       }}>
         席替え
       </button>

@@ -1,99 +1,110 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SetSeats from './setSeats';
 import ChangeSeats from './changeSeats';
 import Result from './result';
 
-class Seats extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      seats: Array(56).fill(null),
-      viewChange: true,
-    };
-  }
+const Seats = () => {
+  const [seats, setSeats] = useState(Array(56).fill(null));
+  const [viewChange, setViewChange] = useState(true);
+  const [viewLoading, setViewLoading] = useState(false);
 
-  handleClick = (i) => {
-    const seats = this.state.seats.slice();
-    if(seats[i]===0){
-      seats[i] = null;
+  const handleClick = (i) => {
+    const updatedSeats = [...seats];
+    if (updatedSeats[i] === 0) {
+      updatedSeats[i] = null;
     } else {
-      seats[i] = 0;
+      updatedSeats[i] = 0;
     }
-    this.setState({seats: seats});
-  }
+    setSeats(updatedSeats);
+  };
 
-  resultSeats = (num) => {
-    const seats = this.state.seats.slice();
-    let indexSeats=0;
-    let indexNum=0;
-    while(indexNum<num.length) {
-      if (seats[indexSeats]!==0) {
-        seats[indexSeats] = num[indexNum];
+  const resultSeats = (num) => {
+    const updatedSeats = [...seats];
+    let indexSeats = 0;
+    let indexNum = 0;
+    while (indexNum < num.length) {
+      if (updatedSeats[indexSeats] !== 0) {
+        updatedSeats[indexSeats] = num[indexNum];
         indexNum++;
       }
       indexSeats++;
     }
-    this.setState({seats: seats});
-    this.setState({viewChange: false});
-  }
+    setSeats(updatedSeats);
+    setViewChange(false);
+    setViewLoading(true);
+  };
 
-  renderSeats(i) {
-    return (
-    <SetSeats
-      value={i}
-      onClick={this.handleClick}
-      />
-    );
-  }
+  const renderSeats = (i) => {
+    return <SetSeats value={i} onClick={handleClick} />;
+  };
 
-  ViewSeats(w,h){
-    return(h.map((index) => (
-      <div className="board-row">
-        {w.map((number) => (
-          this.renderSeats(number+7*index)
-        ))}
+  const ViewSeats = (w, h) => {
+    return h.map((index) => (
+      <div className="board-row" key={index}>
+        {w.map((number) => renderSeats(number + 7 * index))}
       </div>
-    )))
-  }
-  renderResult(i) {
-    return (
-    <Result
-      value={this.state.seats[i]}
-      />
-    );
-  }
+    ));
+  };
 
-  ViewResult(w,h){
-    return(h.map((index) => (
-      <div className="board-row">
-        {w.map((number) => (
-          this.renderResult(number+7*index)
-        ))}
+  const renderResult = (i) => {
+    return <Result value={seats[i]} />;
+  };
+
+  const ViewResult = (w, h) => {
+    return h.map((index) => (
+      <div className="board-row" key={index}>
+        {w.map((number) => renderResult(number + 7 * index))}
       </div>
-    )))
-  }
+    ));
+  };
 
-  ViewController(w,h){
-    if(this.state.viewChange)return this.ViewSeats(w,h)
-    else return this.ViewResult(w,h)
-  }
-
-  render() {
-    const widthNumber = [0,1,2,3,4,5,6];
-    const heigth = [0,1,2,3,4,5,6,7];
+  const ViewLoading = () => {
+    setTimeout(() => {
+      setViewLoading(false);
+    }, 3000);
     return (
-      <div>
-        {this.ViewController(widthNumber,heigth)}
-        <div className="viewChange">
-          <ChangeSeats
-          seats={this.state.seats}
-          onClick={this.resultSeats}
-          />
-          <button className='Button' onClick={() => {this.setState({viewChange:true,seats: Array(56).fill(null)})}}>再抽選</button>
+      <div className="box">
+        <div className="spinner type1">
+          <span>Loading...</span>
         </div>
       </div>
     );
-  }
-}
+  };
+
+  const ViewController = () => {
+    if (viewChange) {
+      return ViewSeats(widthNumber, height);
+    } else {
+      if (viewLoading) {
+        return ViewLoading();
+      } else {
+        return ViewResult(widthNumber, height);
+      }
+    }
+  };
+
+  const widthNumber = [0, 1, 2, 3, 4, 5, 6];
+  const height = [0, 1, 2, 3, 4, 5, 6, 7];
+
+  return (
+    <div>
+      {ViewController()}
+      {!viewLoading && (
+        <div className="viewChange">
+          <ChangeSeats seats={seats} onClick={resultSeats} />
+          <button
+            className="Button"
+            onClick={() => {
+              setViewChange(true);
+              setSeats(Array(56).fill(null));
+            }}
+          >
+            初期化
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Seats;
