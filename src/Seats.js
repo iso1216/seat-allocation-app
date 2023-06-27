@@ -89,7 +89,7 @@ class Seats extends React.Component {
           seats={this.state.seats}
           onClick={this.resultSeats}
           />
-          <button className='Button' onClick={() => {this.setState({viewChange:true})}}>再抽選</button>
+          <button className='Button' onClick={() => {this.setState({viewChange:true,seats: Array(56).fill(null)})}}>再抽選</button>
         </div>
       </div>
     );
