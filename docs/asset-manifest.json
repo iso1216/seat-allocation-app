@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/seat-allocation-app/static/css/main.aa15e612.css",
+    "main.js": "/seat-allocation-app/static/js/main.43b41132.js",
+    "static/js/787.cd53558e.chunk.js": "/seat-allocation-app/static/js/787.cd53558e.chunk.js",
+    "index.html": "/seat-allocation-app/index.html",
+    "main.aa15e612.css.map": "/seat-allocation-app/static/css/main.aa15e612.css.map",
+    "main.43b41132.js.map": "/seat-allocation-app/static/js/main.43b41132.js.map",
+    "787.cd53558e.chunk.js.map": "/seat-allocation-app/static/js/787.cd53558e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aa15e612.css",
+    "static/js/main.43b41132.js"
+  ]
+}
