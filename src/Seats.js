@@ -1,89 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SetSeats from './setSeats';
 import ChangeSeats from './changeSeats';
 import Result from './result';
 
-class Seats extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      seats: Array(56).fill(null),
-      viewChange: true,
-    };
-  }
+const Seats = () => {
+  const [seats, setSeats] = useState(Array(56).fill(null));
+  const [viewChange, setViewChange] = useState(true);
 
-  handleClick = (i) => {
-    const seats = this.state.seats.slice();
-    if (seats[i] === 0) {
-      seats[i] = null;
+  const handleClick = (i) => {
+    const updatedSeats = [...seats];
+    if (updatedSeats[i] === 0) {
+      updatedSeats[i] = null;
     } else {
-      seats[i] = 0;
+      updatedSeats[i] = 0;
     }
-    this.setState({ seats: seats });
+    setSeats(updatedSeats);
   };
 
-  resultSeats = (num) => {
-    const seats = this.state.seats.slice();
+  const resultSeats = (num) => {
+    const updatedSeats = [...seats];
     let indexSeats = 0;
     let indexNum = 0;
     while (indexNum < num.length) {
-      if (seats[indexSeats] !== 0) {
-        seats[indexSeats] = num[indexNum];
+      if (updatedSeats[indexSeats] !== 0) {
+        updatedSeats[indexSeats] = num[indexNum];
         indexNum++;
       }
       indexSeats++;
     }
-    this.setState({ seats: seats, viewChange: false });
+    setSeats(updatedSeats);
+    setViewChange(false)
   };
 
-  renderSeats(i) {
-    return <SetSeats value={i} onClick={this.handleClick} />;
-  }
+  const renderSeats = (i) => {
+    return <SetSeats value={i} onClick={handleClick} />;
+  };
 
-  ViewSeats(w, h) {
+  const ViewSeats = (w, h) => {
     return h.map((index) => (
       <div className="board-row" key={index}>
-        {w.map((number) => this.renderSeats(number + 7 * index))}
+        {w.map((number) => renderSeats(number + 7 * index))}
       </div>
     ));
-  }
+  };
 
-  renderResult(i) {
-    return <Result value={this.state.seats[i]} />;
-  }
+  const renderResult = (i) => {
+    return <Result value={seats[i]} />;
+  };
 
-  ViewResult(w, h) {
+  const ViewResult = (w, h) => {
     return h.map((index) => (
       <div className="board-row" key={index}>
-        {w.map((number) => this.renderResult(number + 7 * index))}
+        {w.map((number) => renderResult(number + 7 * index))}
       </div>
     ));
-  }
+  };
 
-  render() {
-    const widthNumber = [0, 1, 2, 3, 4, 5, 6];
-    const height = [0, 1, 2, 3, 4, 5, 6, 7];
-    return (
-      <div>
-        {this.state.viewChange ? (
-          this.ViewSeats(widthNumber, height)
-        ) : (
-          this.ViewResult(widthNumber, height)
-        )}
-        <div className="viewChange">
-          <ChangeSeats seats={this.state.seats} onClick={this.resultSeats} />
-          <button
-            className="Button"
-            onClick={() => {
-              this.setState({ viewChange: true, seats: Array(56).fill(null) });
-            }}
-          >
-            再抽選
-          </button>
-        </div>
+  const widthNumber = [0, 1, 2, 3, 4, 5, 6];
+  const height = [0, 1, 2, 3, 4, 5, 6, 7];
+
+  return (
+    <div>
+      {viewChange ? (
+        ViewSeats(widthNumber, height)
+      ) : (
+        ViewResult(widthNumber, height)
+      )}
+      <div className="viewChange">
+        <ChangeSeats seats={seats} onClick={resultSeats} />
+        <button
+          className="Button"
+          onClick={() => {
+            setViewChange(true);
+            setSeats(Array(56).fill(null));
+          }}
+        >
+          初期化
+        </button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Seats;
