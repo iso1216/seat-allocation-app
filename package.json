@@ -1,6 +1,6 @@
 {
   "name": "seat-allocation-app",
-  "homepage": "https://classSeater.com/",
+  "homepage": "https://iso1216.github.io/seat-allocation-app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
