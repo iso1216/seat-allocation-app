@@ -1,10 +1,8 @@
-body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
-ol, ul {
-  padding-left: 30px;
+body {
+  margin: 20px;
+  background-color: aquamarine;
 }
 
 .board-row:after {
@@ -13,44 +11,73 @@ ol, ul {
   display: table;
 }
 
-.status {
-  margin-bottom: 10px;
-}
-
 .seat {
+  font-family: 'Noto Sans JP', sans-serif;
   background: #fff;
-  border: 1px solid #999;
+  border: none;
+  border-radius: 10px;
   float: left;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   line-height: 34px;
-  height: 80px;
-  margin-right: -1px;
-  margin-top: -1px;
+  height: 75px;
+  margin-right: 10px;
+  margin-top: 5px;
   padding: 0;
   text-align: center;
-  width: 120px;
+  width: 110px;
 }
 
 .noneSeat {
   background: #555;
-  border: 1px solid #999;
+  border: none;
+  border-radius: 10px;
   float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 80px;
-  margin-right: -1px;
-  margin-top: -1px;
+  height: 75px;
+  margin-right: 10px;
+  margin-top: 5px;
   padding: 0;
-  text-align: center;
-  width: 120px;
+  width: 110px;
 }
 
 .seat:focus {
   outline: none;
 }
 
+.viewChange{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f0f0f0;
+  color: #333333;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.Button:hover {
+  background-color: #e0e0e0;
+}
+
+.Button:active {
+  background-color: #d0d0d0;
+}
+
 .kbd-navigation .seat:focus {
   background: #ddd;
+}
+
+.root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
