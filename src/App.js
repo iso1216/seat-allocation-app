@@ -17,7 +17,7 @@ export default function App(){
       case 1:
         return <Seats setValue={setValue} heightNum={heightNum} widthNum={widthNum} seats={seats} setSeats={setSeats} />;
       case 2:
-        return <Loading setValue={setValue} />;
+        return <Loading setValue={setValue} seats={seats} setSeats={setSeats} num={widthNum*heightNum} />;
       case 3:
         return <Result setValue={setValue} heightNum={heightNum} widthNum={widthNum} />;
       default:
