@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './App.css';
 import reportWebVitals from './reportWebVitals';
-import Seats from './Seats';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div className='root'>
   <React.StrictMode>
-    <Seats />
+    <App />
   </React.StrictMode>
   </div>
 );
