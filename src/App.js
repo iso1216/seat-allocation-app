@@ -13,13 +13,13 @@ export default function App(){
   const ViewChange = (value) => {
     switch (value) {
       case 0:
-        return <SelectValue setValue={setValue} setHeight={setHeight} setWidth={setWidth} />;
+        return <SelectValue setValue={setValue} setHeight={setHeight} setWidth={setWidth} setSeats={setSeats} />;
       case 1:
         return <Seats setValue={setValue} heightNum={heightNum} widthNum={widthNum} seats={seats} setSeats={setSeats} />;
       case 2:
         return <Loading setValue={setValue} seats={seats} setSeats={setSeats} num={widthNum*heightNum} />;
       case 3:
-        return <Result setValue={setValue} heightNum={heightNum} widthNum={widthNum} />;
+        return <Result setValue={setValue} heightNum={heightNum} widthNum={widthNum} seats={seats} setHeight={setHeight} setWidth={setWidth} setSeats={setSeats} />;
       default:
         break;
     }
