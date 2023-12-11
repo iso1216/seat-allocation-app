@@ -10,6 +10,11 @@ export default function Result({setValue, heightNum, widthNum, seats, setHeight,
     setWidth(1);
     setValue(0);
   }
+
+  const handleReChange = () => {
+    setValue(2);
+  }
+
   return(
     <Box align="center">
       <Typography marginY={2} variant="body1">席替え結果</Typography>
@@ -28,7 +33,8 @@ export default function Result({setValue, heightNum, widthNum, seats, setHeight,
           })}
         </Box>
       })}
-      <Button sx={{color: "black", backgroundColor: "white", marginTop: 2}} onClick={handleViewChange} >再実行！</Button>
+      <Button sx={{color: "black", backgroundColor: "white", marginTop: 2, marginRight: 2}} onClick={handleViewChange} >最初の画面に戻る！</Button>
+      <Button sx={{color: "black", backgroundColor: "white", marginTop: 2}} onClick={handleReChange} >再実行！</Button>
     </Box>
   );
 };

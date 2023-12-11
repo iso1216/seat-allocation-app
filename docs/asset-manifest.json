@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/seat-allocation-app/static/css/main.d71ab7cb.css",
-    "main.js": "/seat-allocation-app/static/js/main.d33b099c.js",
+    "main.js": "/seat-allocation-app/static/js/main.a349f18c.js",
     "static/js/787.cd53558e.chunk.js": "/seat-allocation-app/static/js/787.cd53558e.chunk.js",
     "index.html": "/seat-allocation-app/index.html",
     "main.d71ab7cb.css.map": "/seat-allocation-app/static/css/main.d71ab7cb.css.map",
-    "main.d33b099c.js.map": "/seat-allocation-app/static/js/main.d33b099c.js.map",
+    "main.a349f18c.js.map": "/seat-allocation-app/static/js/main.a349f18c.js.map",
     "787.cd53558e.chunk.js.map": "/seat-allocation-app/static/js/787.cd53558e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d71ab7cb.css",
-    "static/js/main.d33b099c.js"
+    "static/js/main.a349f18c.js"
   ]
 }
